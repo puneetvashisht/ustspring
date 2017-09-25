@@ -1,17 +1,17 @@
 package com.ust;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 
-import com.ust.entity.Bookmark;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.ust.entity.User;
 
+@Repository
 public class UserRepository {
+	@PersistenceContext
+    private EntityManager em;
 	
 	public static void main(String[] args) {
 //		Bookmark bookmark = new Bookmark("google.com");
@@ -29,26 +29,28 @@ public class UserRepository {
 	}
 	
 //	Step1. Create EMF
-	EntityManagerFactory emf = Persistence.createEntityManagerFactory("myjpa"); 
+//	EntityManagerFactory emf = Persistence.createEntityManagerFactory("myjpa"); 
 
 	
+	@Transactional
 	public void addUser(User user){
-		EntityManager em = emf.createEntityManager();
-		EntityTransaction transaction = em.getTransaction();
-		transaction.begin();
+//		EntityManager em = emf.createEntityManager();
+//		EntityTransaction transaction = em.getTransaction();
+//		transaction.begin();
 			em.persist(user);
-		transaction.commit();
-		em.close();
+//		transaction.commit();
+//		em.close();
 	}
 	
+	@Transactional
 	public User findUser(int id){
-		EntityManager em = emf.createEntityManager();
-		EntityTransaction transaction = em.getTransaction();
-		transaction.begin();
+//		EntityManager em = emf.createEntityManager();
+//		EntityTransaction transaction = em.getTransaction();
+//		transaction.begin();
 		User user = em.find(User.class, id);
 		System.out.println(user);
-		transaction.commit();
-		em.close();
+//		transaction.commit();
+//		em.close();
 		return user;
 	}
 }
