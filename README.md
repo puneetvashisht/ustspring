@@ -14,7 +14,18 @@ Coverage --
     Day 2
 
     Spring Web with JPA
-    Spring REST
+    Spring REST: spring-mvc
+    @RestController
+    @RequestMapping
+    REST with JPA
+
+    Day 3
+    Complete flow: getUsers
+    POST method to send information to REST
+    POSTMAN - testing rest api
+    @ResponseStatus(404, 201) -- HttpStatus.CREATED, HttpStatus.NOTFOUND
+    Rest Client using AngularJS
+
     
     
 
