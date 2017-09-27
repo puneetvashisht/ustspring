@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Angular Client</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.css"></link>
+</head>
+<body ng-app="myApp">
+
+	<div ng-controller="AppCtrl">
+		<table>
+			<tr ng-repeat="user in users">
+				<td>{{user.id}}</td>
+				<td>{{user.name}}</td>
+				<td>{{user.bookmarks[0].bookmarkUrl}}</td>
+			</tr>
+		</table>
+		
+		<button ng-click="load()">Load Data</button>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('AppCtrl', function($scope, $http){
+			$scope.test = "Some message",
+			$scope.load = function(){
+				$http({
+					url: 'api/users',
+					method: 'GET'
+				}).then(res=>{
+					console.log(res.data);
+					$scope.users = res.data;
+				})
+			}
+		})
+	</script>
+</body>
+</html>

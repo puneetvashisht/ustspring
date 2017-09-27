@@ -1,5 +1,7 @@
 package com.ust.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +20,9 @@ public class UserService {
 
 	public User findUser(int id) {
 		return repository.findUser(id);
+	}
+
+	public List<User> findUsers() {
+		return repository.findUsers();
 	}
 }

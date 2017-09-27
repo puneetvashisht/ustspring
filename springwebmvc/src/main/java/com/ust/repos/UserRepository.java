@@ -1,7 +1,10 @@
 package com.ust.repos;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,5 +55,14 @@ public class UserRepository {
 //		transaction.commit();
 //		em.close();
 		return user;
+	}
+	@Transactional
+	public List<User> findUsers() {
+		Query query = em.createQuery("from User u");
+		List<User> users = query.getResultList();
+		for(User user: users){
+			System.out.println(user.getBookmarks());
+		}
+		return users;
 	}
 }
